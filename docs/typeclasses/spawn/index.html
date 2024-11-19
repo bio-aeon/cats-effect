@@ -127,13 +127,13 @@
 <span class="hljs-comment">//       ioe = Map(</span>
 <span class="hljs-comment">//         ioe = Blocking(</span>
 <span class="hljs-comment">//           hint = Blocking,</span>
-<span class="hljs-comment">//           thunk = cats.effect.std.ConsoleCompanionCrossPlatform$SyncConsole$$Lambda$16949/0x0000000803416440@2b36f072,</span>
+<span class="hljs-comment">//           thunk = cats.effect.std.ConsoleCompanionCrossPlatform$SyncConsole$$Lambda$15575/0x00000008028b3440@d983fd9,</span>
 <span class="hljs-comment">//           event = cats.effect.tracing.TracingEvent$StackTrace</span>
 <span class="hljs-comment">//         ),</span>
-<span class="hljs-comment">//         f = cats.effect.IO$$Lambda$17245/0x0000000803311040@7b00990e,</span>
+<span class="hljs-comment">//         f = cats.effect.IO$$Lambda$15871/0x000000080371e040@4e407a26,</span>
 <span class="hljs-comment">//         event = cats.effect.tracing.TracingEvent$StackTrace</span>
 <span class="hljs-comment">//       ),</span>
-<span class="hljs-comment">//       f = cats.StackSafeMonad$$Lambda$17247/0x000000080332f840@7b36811e,</span>
+<span class="hljs-comment">//       f = cats.StackSafeMonad$$Lambda$15873/0x000000080371f840@1e341c24,</span>
 <span class="hljs-comment">//       event = cats.effect.tracing.TracingEvent$StackTrace</span>
 <span class="hljs-comment">//     )</span>
 <span class="hljs-comment">//   ),</span>
@@ -239,7 +239,7 @@ fiber.join flatMap {
 <ul>
 <li>If the child fiber completed successfully, produce its result</li>
 <li>If it errored, re-raise the error within the current fiber</li>
-<li>If it canceled, attempt to self-cancel, and if the self-cancelation fails, <strong>deadlock</strong></li>
+<li>If it canceled, the caller is indefinitely suspended without termination (a.k.a. <strong>deadlock</strong>)</li>
 </ul>
 <p>Sometimes this is an appropriate semantic, and the cautiously-verbose <code>joinWithNever</code> function implements it for you. It is worth noting that this semantic was the <em>default</em> in Cats Effect 2 (and in fact, no other semantic was possible).</p>
 <p>Regardless of all of the above, <code>join</code> and <code>Outcome</code> give you enough flexibility to choose the appropriate response, regardless of your use-case.</p>
